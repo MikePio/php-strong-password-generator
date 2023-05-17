@@ -1,6 +1,4 @@
 <?php
-$test = '$test';
-
 
 ?>
 
@@ -23,17 +21,27 @@ $test = '$test';
     <div class="pb-2">Questo sito ti da la possibilità di generare una password sicura composta da almeno una lettera maiuscola, una lettera minuscola, carattere speciale e un numero.
       Il numero di caratteri della password viene scelto dall'utente.</div>
 
-    <form>
+    <form action="index.php" method="GET">
 
       <div class="form-group py-3">
         <h4 class="py-1" >Inserisci la lunghezza della tua password</h4>
         <p class="py-1" >Il numero inserito rappresenta il numero di caratteri di cui la password deve essere composta.</p>
-        <input type="number" class="form-control py-3" id="passwordLenght" placeholder="Inserisci il numero dei caratteri (min. 4, max. 20)">
+        <input name="passwordLength" type="number" min="4" max="20" class="form-control py-3" id="passwordLength" placeholder="Inserisci il numero dei caratteri (min. 4, max. 20)">
       </div>
 
       <button type="submit" class="btn btn-primary p-2 px-3">Genera password</button>
 
     </form>
+
+  <?php
+    if (isset($_GET['passwordLength'])) {
+      $passwordLength = $_GET['passwordLength'];
+      echo "<h1>$passwordLength</h1>";
+    //OPPURE
+    // }else{
+      // echo "";
+    }
+  ?>    
 
   </div>
 
