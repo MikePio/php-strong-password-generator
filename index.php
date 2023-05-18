@@ -2,7 +2,9 @@
 function sendFormValue(){
   if (isset($_GET['passwordLength'])) {
     $passwordLength = $_GET['passwordLength'];
-    echo "<h1 class='py-5'>$passwordLength</h1>";
+    // echo "<h1 class='py-5'>$passwordLength</h1>";
+    generatePassword($passwordLength);
+
   //OPPURE
   // }else{
     // echo "";
@@ -10,33 +12,119 @@ function sendFormValue(){
 }
 
 function generatePassword($passwordLength){
-  //creo un array vuoto dove pusherò ogni carattere
-  $passwordArray = [];
+  $passwordLength = $_GET['passwordLength'];
 
-  //array delle lettere minuscole
-
-  //array delle lettere maiuscole
-
-  //array dei numeri
-
-  //array dei caratteri speciali
-
-//TODO bozza da finire della funzione per generare la password
-  // controllo della lunghezza dell'array in base al numero inserito nell'input(in questo caso è il parametro della funzione)
-  if (count($passwordArray) < $passwordLength) {
+    //* lettere minuscole random
+    // echo "<br>";
+    // chr viene utilizzato per convertire un numero intero in un carattere corrispondente nella codifica dei caratteri
+    $randomLowercaseLetter  = chr(rand(97,122));
+    // echo $randomLowercaseLetter;
     
-    var_dump($passwordArray);
-  } else {
-    // join viene utilizzato per restituire una stringa dagli elementi di un array
-    $passwordGenerated = join('', $passwordArray);
-    // join e implode sono la stessa cosa
-    $passwordGenerated = implode('', $passwordArray);
+    //* lettere maiuscole random
+    // echo "<br>";
+    // chr viene utilizzato per convertire un numero intero in un carattere corrispondente nella codifica dei caratteri
+    $randomUppercaseLetter  = chr(rand(65,90));
+    // echo $randomUppercaseLetter ;
+  
+    //* numeri random
+    // echo "<br>";
+    $randomNumber = rand(0, 9);
+    // echo $randomNumber;
+  
+    //* tutti i caratteri speciali
+    // echo "<br>";
+    $specialCharacters = [
+      '!',
+      '@', 
+      '#', 
+      '$', 
+      '%', 
+      '^',
+      '&', 
+      '*'
+    ];
+  
+    // echo "<br>";
+    //* caratteri speciali random
+    // $randomSpecialCharacters = array_rand($specialCharacters, $passwordLength);
+    $randomSpecialCharacters = array_rand($specialCharacters, 2);
+    // echo $specialCharacters[$randomSpecialCharacters[0]] . "<br>";
+    // echo $specialCharacters[$randomSpecialCharacters[1]] . "<br>";
+    $randomSpecialCharacter = $specialCharacters[$randomSpecialCharacters[0]];
+    // echo $randomSpecialCharacter;
+  
+    //* password con 4 caratteri
+    // $password = "$randomLowercaseLetter$randomUppercaseLetter$randomNumber$randomSpecialCharacter";
+    // echo $password;
+    
 
-    // stampo la password
-    echo "<h1 class='py-5'>$passwordGenerated</h1>";
-  }
+  //   //creo una stringa vuota dove pusherò ogni carattere
+  //   $password = '';
+
+  // // controllo della lunghezza dell'array in base al numero inserito nell'input(in questo caso è il parametro della funzione)
+  // if (strlen($password) < $passwordLength) {
+  //   $password .= "$randomLowercaseLetter";
+  // } 
+  // if (strlen($password) < $passwordLength) {
+  //   $password .= "$randomUppercaseLetter";
+  // } 
+  // if (strlen($password) < $passwordLength) {
+  //   $password .= "$randomNumber";
+  // } 
+  // if (strlen($password) < $passwordLength) {
+  //   $password .= "$randomSpecialCharacter";
+  // } 
+  // if (strlen($password) == $passwordLength) {
+  //   // join viene utilizzato per restituire una stringa dagli elementi di un array
+  //   // $passwordGenerated = join('', $password);
+  //   // join e implode sono la stessa cosa
+  //   // $passwordGenerated = implode('', $password);
+
+  //   // stampo la password
+  //   echo "<h1 class='py-5'>$password</h1>";
+  //   var_dump($password);
+  // }
+
+  // ciclo for
+    // $password = '';
+
+    // // Se la password è più lunga di 5 caratteri, ne prendiamo solo i primi 5 caratteri
+    // $password = substr($password, 0, $passwordLength);
+    // // Stampa la stringa $password
+    // echo $password;
+
+  
 
 
+    $password = '';
+    while (strlen($password) < $passwordLength) {
+      // controllo della lunghezza dell'array in base al numero inserito nell'input(in questo caso è il parametro della funzione)
+      if (strlen($password) < $passwordLength) {
+        $password .= "$randomLowercaseLetter";
+      } 
+      if (strlen($password) < $passwordLength) {
+        $password .= "$randomUppercaseLetter";
+      } 
+      if (strlen($password) < $passwordLength) {
+        $password .= "$randomNumber";
+      } 
+      if (strlen($password) < $passwordLength) {
+        $password .= "$randomSpecialCharacter";
+      } 
+      if (strlen($password) == $passwordLength) {
+        // join viene utilizzato per restituire una stringa dagli elementi di un array
+        // $passwordGenerated = join('', $password);
+        // join e implode sono la stessa cosa
+        // $passwordGenerated = implode('', $password);
+
+        // stampo la password
+        echo "<h1 class='py-5'>$password</h1>";
+        // var_dump($password); per verificare la lunghezza
+        // var_dump($password);
+      }
+      
+
+    }
 
 
 
@@ -78,73 +166,18 @@ function generatePassword($passwordLength){
     //funzione che stampa la lunghezza della password
     sendFormValue();
 
-    //funzione che stampa la password generata
-    // generatePassword($passwordLength);
+    //funzione che stampa la password generata    
+    // if (isset($_GET['passwordLength'])) {
+    //   $passwordLength = $_GET['passwordLength'];
+    //   generatePassword($passwordLength);
+    // };
 
 
 
-  //* tutte le lettere minuscole dalla a alla z 
-  echo "<br>";
-  foreach( range('a', 'z') as $elements) {
-    echo $elements . " ";
-  }
-
-  //* lettere minuscole random
-  echo "<br>";
-  // chr viene utilizzato per convertire un numero intero in un carattere corrispondente nella codifica dei caratteri
-  $letter = chr(rand(97,122));
-  echo $letter;
-
-
-  
-  //* tutte le lettere maiuscole dalla A alla Z 
-  echo "<br>";
-  foreach( range('A', 'Z') as $elements) {
-    echo $elements . " ";
-  }
-  
-  //* lettere maiuscole random
-  echo "<br>";
-  // chr viene utilizzato per convertire un numero intero in un carattere corrispondente nella codifica dei caratteri
-  $letter = chr(rand(65,90));
-  echo $letter;
 
 
 
-  //* tutti i numeri da 1 a 9
-  echo "<br>";
-  foreach( range('1', '9') as $elements) {
-      echo $elements . " ";
-  }
 
-  //* numeri random
-  echo "<br>";
-  echo rand(0, 9);
-
-
-
-  //* tutti i caratteri speciali
-  echo "<br>";
-  $specialCharacters = [
-    '!',
-    '@', 
-    '#', 
-    '$', 
-    '%', 
-    '^', 
-    '&', 
-    '*'
-  ];
-  foreach($specialCharacters as $elements) {
-    echo "$elements ";
-  }
-
-  echo "<br>";
-  //* caratteri speciali random
-  // $randomSpecialCharacters = array_rand($specialCharacters, $passwordLength);
-  $randomSpecialCharacters = array_rand($specialCharacters, 2);
-  echo $specialCharacters[$randomSpecialCharacters[0]] . "<br>";
-  echo $specialCharacters[$randomSpecialCharacters[1]] . "<br>";
 
 
   ?>    
