@@ -12,23 +12,23 @@ function sendFormValue(){
 }
 
 function generatePassword($passwordLength){
-  $passwordLength = $_GET['passwordLength'];
+
 
     //* lettere minuscole random
     // echo "<br>";
     // chr viene utilizzato per convertire un numero intero in un carattere corrispondente nella codifica dei caratteri
-    $randomLowercaseLetter  = chr(rand(97,122));
+    // $randomLowercaseLetter  = chr(rand(97,122));
     // echo $randomLowercaseLetter;
     
     //* lettere maiuscole random
     // echo "<br>";
     // chr viene utilizzato per convertire un numero intero in un carattere corrispondente nella codifica dei caratteri
-    $randomUppercaseLetter  = chr(rand(65,90));
+    // $randomUppercaseLetter  = chr(rand(65,90));
     // echo $randomUppercaseLetter ;
   
     //* numeri random
     // echo "<br>";
-    $randomNumber = rand(0, 9);
+    // $randomNumber = rand(0, 9);
     // echo $randomNumber;
   
     //* tutti i caratteri speciali
@@ -47,10 +47,10 @@ function generatePassword($passwordLength){
     // echo "<br>";
     //* caratteri speciali random
     // $randomSpecialCharacters = array_rand($specialCharacters, $passwordLength);
-    $randomSpecialCharacters = array_rand($specialCharacters, 2);
+    // $randomSpecialCharacters = array_rand($specialCharacters, 2);
     // echo $specialCharacters[$randomSpecialCharacters[0]] . "<br>";
     // echo $specialCharacters[$randomSpecialCharacters[1]] . "<br>";
-    $randomSpecialCharacter = $specialCharacters[$randomSpecialCharacters[0]];
+    // $randomSpecialCharacter = $specialCharacters[$randomSpecialCharacters[0]];
     // echo $randomSpecialCharacter;
   
     //* password con 4 caratteri
@@ -94,21 +94,31 @@ function generatePassword($passwordLength){
     // echo $password;
 
   
+  $passwordLength = $_GET['passwordLength'];
 
+  $password = '';
 
-    $password = '';
     while (strlen($password) < $passwordLength) {
       // controllo della lunghezza dell'array in base al numero inserito nell'input(in questo caso è il parametro della funzione)
       if (strlen($password) < $passwordLength) {
+        //* lettere minuscole random
+        $randomLowercaseLetter  = chr(rand(97,122));
         $password .= "$randomLowercaseLetter";
       } 
       if (strlen($password) < $passwordLength) {
+        //* lettere maiuscole random
+        $randomUppercaseLetter  = chr(rand(65,90));
         $password .= "$randomUppercaseLetter";
       } 
       if (strlen($password) < $passwordLength) {
+        //* numeri random
+        $randomNumber = rand(0, 9);
         $password .= "$randomNumber";
       } 
       if (strlen($password) < $passwordLength) {
+        //* caratteri speciali random
+        $randomSpecialCharacters = array_rand($specialCharacters, 2);
+        $randomSpecialCharacter = $specialCharacters[$randomSpecialCharacters[0]];
         $password .= "$randomSpecialCharacter";
       } 
       if (strlen($password) == $passwordLength) {
