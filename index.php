@@ -129,10 +129,16 @@ function generatePassword($passwordLength){
 
         //* str_shuffle() mescola casualmente tutti i caratteri di una stringa
         $password = str_shuffle($password);
+        
+        // stampo la password
+        echo "<div class='alert alert-primary my-5' role='alert'>
+        <strong>Password generata:</strong><h1 class='mt-3'>$password</h1>
+        </div>";
 
         // stampo la password
-        echo "<h1 class='pt-5'>Password generata:</h1>";
-        echo "<h1 class='py-5 pt-3'>$password</h1>";
+        // echo "<h1 class='pt-5'>Password generata:</h1>";
+        // echo "<h1 class='py-5 pt-3'>$password</h1>";
+
         // var_dump($password); per verificare la lunghezza
         // var_dump($password);
       }
