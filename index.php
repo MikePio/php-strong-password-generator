@@ -127,8 +127,12 @@ function generatePassword($passwordLength){
         // join e implode sono la stessa cosa
         // $passwordGenerated = implode('', $password);
 
+        //* str_shuffle() mescola casualmente tutti i caratteri di una stringa
+        $password = str_shuffle($password);
+
         // stampo la password
-        echo "<h1 class='py-5'>$password</h1>";
+        echo "<h1 class='pt-5'>Password generata:</h1>";
+        echo "<h1 class='py-5 pt-3'>$password</h1>";
         // var_dump($password); per verificare la lunghezza
         // var_dump($password);
       }
@@ -165,7 +169,7 @@ function generatePassword($passwordLength){
       <div class="form-group py-3">
         <h4 class="py-1" >Inserisci la lunghezza della tua password</h4>
         <p class="py-1" >Il numero inserito rappresenta il numero di caratteri di cui la password deve essere composta.</p>
-        <input name="passwordLength" type="number" min="4" max="20" class="form-control py-3" id="passwordLength" placeholder="Inserisci il numero dei caratteri (min. 4, max. 20)">
+        <input autofocus name="passwordLength" type="number" min="4" max="20" class="form-control py-3" id="passwordLength" placeholder="Inserisci il numero dei caratteri (min. 4, max. 20)">
       </div>
 
       <button type="submit" class="btn btn-primary p-2 px-3">Genera password</button>
