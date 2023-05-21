@@ -43,25 +43,11 @@ $max = 20;
 
     </form>
 
-  <?php
-    //funzione che stampa la lunghezza della password
-    sendFormValue();
-
-    //funzione che stampa la password generata    
-    // if (isset($_GET['passwordLength'])) {
-    //   $passwordLength = $_GET['passwordLength'];
-    //   generatePassword($passwordLength);
-    // };
-
-
-
-
-
-
-
-
-
-  ?>    
+    <?php
+      // funzione che stampa la lunghezza della password
+      //! IN QUESTO CASO LA FUNZIONE NON VIENE STAMAPATA IN PAGINA MA VIENE MOSTRATA IN password-landing-page.php (IL COLLEGAMENTO è STATO FATTO NELLA FUNZIONE CONTENUTA NELLA sendFormValue() )
+      sendFormValue();
+    ?>    
 
   </div>
 

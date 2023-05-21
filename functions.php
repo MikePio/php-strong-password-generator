@@ -130,12 +130,18 @@ function generatePassword($passwordLength){
 
         //* str_shuffle() mescola casualmente tutti i caratteri di una stringa
         $password = str_shuffle($password);
-        
-        // stampo la password
-        echo "<div class='alert alert-primary my-3' role='alert'>
-        <strong>Password generata:</strong><h1 class='mt-3'>$password</h1>
-        </div>";
 
+        
+        // stampo la password //* in pagina
+        // echo "<div class='alert alert-primary my-3' role='alert'>
+        // <strong>Password generata:</strong><h1 class='mt-3'>$password</h1>
+        // </div>";
+        
+        // stampo la password //* in password-landing-page.php
+        session_start();
+        $_SESSION['password'] = $password;
+        header('Location: ./password-landing-page.php');     
+        
         // var_dump($password); per verificare la lunghezza
         // var_dump($password);
       }
