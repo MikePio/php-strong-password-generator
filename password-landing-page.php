@@ -35,14 +35,48 @@ if (isset($_SESSION['password'])) {
     // echo  "$password" ;
     echo "<div class='alert alert-primary my-3' role='alert'>
     <strong>Password generata:</strong>
-    <h1 class='mt-3'>$password</h1>
+    <h1 id='password-output' class='mt-3'>$password</h1>
     </div>";
     ?>
 
-    <a href="index.php"><button href="index.php" class="btn btn-primary p-2 px-3">Torna alla homepage</button></a>
+    <div class="d-flex flex-wrap">
+      <a href="index.php"><button class="btn btn-primary p-2 px-3 me-2">Torna alla homepage</button></a>
+      <button onclick="copyToClipboard()" class="btn btn-primary p-2 px-4">Copia password</button>
+    </div>
 
 
   </div>
+
+<script>
+
+  function copyToClipboard() {
+  /* Trova l'elemento <div> contenente la stringa da copiare */
+  var divElement = document.getElementById("password-output");
+
+  /* Crea un elemento di input temporaneo */
+  var tempInput = document.createElement("input");
+  
+  /* Assegna il valore della stringa da copiare all'input temporaneo */
+  tempInput.value = divElement.textContent;
+  
+  /* Aggiungi l'input temporaneo al documento */
+  document.body.appendChild(tempInput);
+  
+  /* Seleziona il testo nell'input temporaneo */
+  tempInput.select();
+  
+  /* Copia il testo negli appunti del sistema operativo */
+  document.execCommand("copy");
+  
+  /* Rimuovi l'input temporaneo dal documento */
+  document.body.removeChild(tempInput);
+  
+  /* Notifica l'utente che la copia è stata effettuata */
+  alert("Testo copiato negli appunti!");
+}
+
+
+</script>
 
 </body>
 
